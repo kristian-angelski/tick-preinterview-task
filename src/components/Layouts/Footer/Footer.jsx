@@ -10,7 +10,6 @@ const Footer = ({ location: { pathname } }) => {
     <Paper>
       <Tabs
         value={pathname}
-        // onChange={handleCallToRouter}
         indicatorColor="primary"
         textColor="primary"
         centered
@@ -30,9 +29,9 @@ const Footer = ({ location: { pathname } }) => {
         />
         <Tab
           label="Employee Job Area"
-          value="/addresses"
+          value="/area"
           component={Link}
-          to="/addresses"
+          to="/area"
         />
       </Tabs>
     </Paper>

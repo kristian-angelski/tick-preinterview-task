@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
-import { Grid, Paper, Typography } from '@material-ui/core';
+import {
+  Grid,
+  Paper,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Tooltip,
+} from '@material-ui/core';
 import {
   fetchCompanies,
   fetchAddresses,
@@ -8,14 +17,23 @@ import {
 } from '../../redux';
 
 const styles = {
-  Typography: {
-    paddingBottom: 20,
-  },
   Paper: {
     padding: 10,
     margin: 10,
+    maxHeight: 600,
+    overflowY: 'auto',
   },
 };
+
+const HtmlTooltip = withStyles(theme => ({
+  tooltip: {
+    backgroundColor: '#f5f5f9',
+    color: 'rgba(0, 0, 0, 0.87)',
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: '1px solid #dadde9',
+  },
+}))(Tooltip);
 
 const Companies = () => {
   const [selectedCompany, setSelectedCompany] = useState({});
@@ -56,32 +74,41 @@ const Companies = () => {
     setHaveSelected(true);
   };
 
+  const tooltipTitle = name => {
+    return (
+      <>
+        <Typography color="inherit">{name}</Typography>
+        <em>{`Would you like to find out more about ${name}?`}</em>
+      </>
+    );
+  };
+
   return (
     <Grid container>
-      <Grid item sm style={styles.Grid}>
+      <Grid item sm>
         <Paper style={styles.Paper}>
-          <Typography style={styles.Typography} variant="h5">
-            Companies
-          </Typography>
+          <Typography variant="h5">Companies</Typography>
           <>
-            {companies &&
-              companies.map(company => {
-                const { id, name } = company;
-                return (
-                  <Typography
-                    key={id}
-                    variant="body1"
-                    align="center"
-                    onClick={() => handleCompanySelected(id)}
-                  >
-                    {name}
-                  </Typography>
-                );
-              })}
+            <List>
+              {companies &&
+                companies instanceof Array &&
+                companies.map(({ id, name }) => {
+                  return (
+                    <HtmlTooltip key={id} title={tooltipTitle(name)}>
+                      <ListItem
+                        button
+                        onClick={() => handleCompanySelected(id)}
+                      >
+                        <ListItemText primary={name} />
+                      </ListItem>
+                    </HtmlTooltip>
+                  );
+                })}
+            </List>
           </>
         </Paper>
       </Grid>
-      <Grid item sm={8}>
+      <Grid item sm={10}>
         <Paper style={styles.Paper}>
           <>
             {haveSelected &&
@@ -123,12 +150,11 @@ const Companies = () => {
                           </div>
                         );
                       })}
-                    {/* employee here */}
                   </Paper>
                 </Grid>
               </Grid>
             ) : (
-              <Typography variant="h5">
+              <Typography align="center" variant="h5">
                 Hello, select a company from the left
               </Typography>
             )}

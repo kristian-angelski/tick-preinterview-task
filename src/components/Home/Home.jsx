@@ -13,6 +13,7 @@ const styles = {
   Paper: {
     padding: 10,
     margin: 10,
+    minHeight: 600,
   },
 };
 
@@ -31,17 +32,16 @@ const Home = ({
 
   return (
     <Grid container>
-      <Grid item sm style={styles.Grid}>
+      <Grid item sm>
         <Paper style={styles.Paper}>
-          <Typography variant="h1">Welcome!</Typography>
-          <Typography variant="h6">
+          <Typography variant="h1" align="center">
+            Welcome!
+          </Typography>
+          <Typography variant="h6" align="center">
             Please select an option from the menu below.
           </Typography>
         </Paper>
       </Grid>
-      {/* <Grid item sm>
-        <Paper style={styles.Paper}>Right Pane</Paper>
-      </Grid> */}
     </Grid>
   );
 };
