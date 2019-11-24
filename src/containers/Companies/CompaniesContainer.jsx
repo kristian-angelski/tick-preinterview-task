@@ -2,17 +2,14 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchCompanies } from '../../redux';
+import { Companies } from '../../components';
 
 const CompaniesContainer = ({ getCompanies }) => {
   useEffect(() => {
     getCompanies();
   }, [getCompanies]);
 
-  return (
-    <div>
-      <h2>CompaniesContainer</h2>
-    </div>
-  );
+  return <Companies />;
 };
 
 // const mapStateToProps = ({ companies }) => companies;
