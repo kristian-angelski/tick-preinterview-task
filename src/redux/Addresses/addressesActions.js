@@ -5,7 +5,7 @@ import {
   FETCH_ADDRESSES_ERROR,
 } from './addressesActionTypes';
 
-const COMPANIES_API_KEY = 'https://api.myjson.com/bins/1f5wz6';
+const ADDRESSES_API_KEY = 'https://api.myjson.com/bins/1f5wz6';
 
 const fetchAddressesRequest = () => {
   return {
@@ -31,7 +31,7 @@ export const fetchAddresses = () => {
   return dispatch => {
     dispatch(fetchAddressesRequest());
     axios
-      .get(COMPANIES_API_KEY)
+      .get(ADDRESSES_API_KEY)
       .then(response => {
         const { data } = response;
         dispatch(fetchAddressesSuccess(data));

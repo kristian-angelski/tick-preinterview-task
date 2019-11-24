@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchEmployees } from '../../redux';
 
-const EmployeesContainer = () => {
+const EmployeesContainer = ({ getEmployees }) => {
+  useEffect(() => {
+    getEmployees();
+  }, [getEmployees]);
+
   return (
     <div>
       <h2>EmployeesContainer</h2>
@@ -8,4 +15,20 @@ const EmployeesContainer = () => {
   );
 };
 
-export default EmployeesContainer;
+// const mapStateToProps = ({ employees }) => employees;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getEmployees: () => dispatch(fetchEmployees()),
+  };
+};
+
+EmployeesContainer.propTypes = {
+  getEmployees: PropTypes.func.isRequired,
+};
+
+export default connect(
+  // mapStateToProps,
+  null,
+  mapDispatchToProps,
+)(EmployeesContainer);
