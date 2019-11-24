@@ -1,4 +1,4 @@
 export { CompaniesContainer } from './Companies';
-export { CompanyAddressesContainer } from './CompanyAddresses';
+export { AddressesContainer } from './Addresses';
 export { EmployeesContainer } from './Employees';
 export { ProjectsContainer } from './Projects';

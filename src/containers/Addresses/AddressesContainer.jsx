@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CompanyAddressesContainer = () => {
+const AddressesContainer = () => {
   return (
     <div>
       <h2>CompanyAddressesContainer</h2>
@@ -8,4 +8,4 @@ const CompanyAddressesContainer = () => {
   );
 };
 
-export default CompanyAddressesContainer;
+export default AddressesContainer;

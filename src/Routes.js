@@ -7,7 +7,7 @@ import {
 import Home from './components';
 import {
   CompaniesContainer,
-  CompanyAddressesContainer,
+  AddressesContainer,
   EmployeesContainer,
   ProjectsContainer,
 } from './containers';
@@ -18,10 +18,7 @@ const Routes = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/company" exact component={CompaniesContainer} />
-        <Route
-          path="/company/:id"
-          component={CompanyAddressesContainer}
-        />
+        <Route path="/company/:id" component={AddressesContainer} />
         <Route
           path="/employee"
           exact
