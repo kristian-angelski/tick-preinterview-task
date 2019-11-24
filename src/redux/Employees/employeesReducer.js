@@ -10,7 +10,7 @@ const initialState = {
   error: '',
 };
 
-const companiesReducer = (state = initialState, action) => {
+const employeesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_EMPLOYEES_REQUEST:
       return {
@@ -33,4 +33,4 @@ const companiesReducer = (state = initialState, action) => {
   }
 };
 
-export default companiesReducer;
+export default employeesReducer;
