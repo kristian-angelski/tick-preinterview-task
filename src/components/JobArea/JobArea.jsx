@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import uuid from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -9,7 +9,7 @@ import {
   ListItem,
   ListItemText,
 } from '@material-ui/core';
-import { fetchEmployees, fetchProjects } from '../../redux';
+import { fetchEmployees } from '../../redux';
 
 const styles = {
   Paper: {
@@ -29,14 +29,11 @@ const JobArea = () => {
 
   useEffect(() => {
     dispatch(fetchEmployees());
-    // dispatch(fetchProjects());
   }, [dispatch]);
 
   const handleClick = event => {
     console.log(event.target);
-  }
-
-  console.log(filteredAreas);
+  };
 
   return (
     <Grid container>
